@@ -22,7 +22,6 @@ class CallbackTest {
         @BeforeEach
         void setup() {
             driver = new ChromeDriver();
-            driver.get("http://localhost:7777/");
         }
 
         @AfterEach
@@ -33,6 +32,7 @@ class CallbackTest {
 
         @Test
         void validOrder(){
+            driver.get("http://localhost:7777/");
             driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Ореолов Евгений");
             driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+79999999999");
             driver.findElement(By.cssSelector("[data-test-id=\"agreement\"]")).click();
@@ -41,6 +41,4 @@ class CallbackTest {
             String actual = driver.findElement(By.cssSelector("[data-test-id=\"order-success\"]")).getText().trim();
             assertEquals (expected, actual);
         }
-
-
     }
