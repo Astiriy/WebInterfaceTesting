@@ -28,6 +28,7 @@ class CallbackTest {
         @AfterEach
         void teardown() {
             driver.quit();
+            driver = null;
         }
 
         @Test
