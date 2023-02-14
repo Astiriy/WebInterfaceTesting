@@ -16,7 +16,7 @@ class CallbackTest {
 
         @BeforeAll
         static void setupAll() {
-            WebDriverManager.chromedriver().setup();
+            System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         }
 
         @BeforeEach
