@@ -84,4 +84,16 @@ public class CallbackTest {
         String actual = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void invalidName() {
+
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Oreolov Evgeniy");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("999999999999");
+        driver.findElement(By.cssSelector("[data-test-id=\"agreement\"]")).click();
+        driver.findElement(By.cssSelector("[role=\"button\"]")).click();
+        String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+        String actual = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText().trim();
+        assertEquals(expected, actual);
+    }
 }
